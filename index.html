@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vértice Social Media</title>
+<meta name="description" content="Vértice Social Media — gestão de Instagram e criação de sites para empresas, influenciadores e profissionais.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%230D0B11%22/%3E%3Cpath%20d%3D%22M8%2046%20L20%2026%20L26%2034%20L34%2012%20L44%2034%20L50%2026%20L58%2046%22%20fill%3D%22none%22%20stroke%3D%22%23F3EEE6%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%3Ccircle%20cx%3D%2234%22%20cy%3D%2212%22%20r%3D%224.5%22%20fill%3D%22%23FF5A36%22/%3E%3C/svg%3E">
+<meta property="og:title" content="Vértice Social Media">
+<meta property="og:description" content="Gestão de Instagram e criação de sites para empresas, influenciadores e profissionais.">
+<meta property="og:image" content="img/og-site.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Philosopher:ital,wght@0,400;1,400;1,700&display=swap">
+<style>
+/* Layout: faixa de batimento cruza o hero; seções alternam texto largo + blocos assimétricos; um só ponto de cor quente */
+:root{
+  --ink:#0D0B11;      /* fundo */
+  --panel:#17141D;    /* superfícies */
+  --line:#2B2733;     /* divisórias */
+  --paper:#F3EEE6;    /* texto */
+  --mute:#9E97A9;     /* texto secundário */
+  --hot:#FF5A36;      /* destaque (pôr do sol) */
+  --hot-2:#FF2E7E;    /* par do destaque, só em gradiente */
+  --violet:#7C5CFF;   /* apoio nos mockups */
+  --f-display:"Montserrat","Gotham",system-ui,sans-serif;
+  --f-serif:"Philosopher",Georgia,serif;
+  --f-body:"Montserrat","Gotham",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"Montserrat","Gotham",system-ui,sans-serif;
+  --r:14px;
+  --max:1180px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--hot);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+.mono{font-family:var(--f-mono);font-weight:500;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
+h1,h2,h3{font-family:var(--f-display);font-weight:300;line-height:1.06;letter-spacing:-.02em;margin:0;text-wrap:balance}
+h2{font-size:clamp(34px,5.2vw,64px)}
+h3{font-size:22px;font-weight:700;letter-spacing:-.01em;line-height:1.15}
+p{margin:0}
+.contact .hot{color:#140906}
+.hot,em.hot{font-family:var(--f-serif);font-style:italic;font-weight:400;color:var(--hot);letter-spacing:0}
+
+/* botões */
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 16px/1 var(--f-body);padding:16px 22px;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .2s,background .2s,border-color .2s}
+.btn-hot{background:var(--hot);color:#140906}
+.btn-hot:hover{transform:translateY(-2px);background:#ff6e4e}
+.btn-ghost{border-color:var(--line);color:var(--paper);background:transparent}
+.btn-ghost:hover{border-color:var(--paper)}
+.btn svg{width:18px;height:18px}
+
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--ink) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:20px;height:76px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--f-display);font-weight:600;font-size:24px;letter-spacing:-.03em}
+.logo{color:var(--paper)}
+.logo svg{height:50px;width:auto;display:block}
+.logo-foot svg{height:96px}
+nav.links{display:flex;gap:28px;font-size:15px}
+nav.links a{text-decoration:none;color:var(--mute);transition:color .2s}
+nav.links a:hover{color:var(--paper)}
+.bar .btn{padding:12px 18px;font-size:15px}
+.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--paper);border-radius:10px;padding:9px 12px;font:600 14px var(--f-body);cursor:pointer}
+@media (max-width:880px){
+  nav.links{display:none;position:absolute;left:0;right:0;top:76px;flex-direction:column;gap:0;background:var(--ink);border-bottom:1px solid var(--line);padding:8px clamp(16px,4vw,40px) 18px}
+  nav.links.open{display:flex}
+  nav.links a{padding:12px 0;border-bottom:1px solid var(--line);color:var(--paper);font-size:17px}
+  .bar .btn{display:none}
+  .menu-btn{display:block}
+}
+
+/* hero */
+.hero{position:relative;padding-block:clamp(48px,8vw,96px) clamp(40px,6vw,72px)}
+.hero-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(32px,5vw,64px);align-items:center}
+.hero h1{font-size:clamp(44px,7vw,92px);font-weight:300;letter-spacing:-.03em;line-height:1}
+.hero .lead{margin-top:28px;font-size:clamp(18px,1.6vw,21px);color:var(--mute);max-width:34ch}
+.hero .lead strong{color:var(--paper);font-weight:600}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.hero .tag{display:inline-flex;align-items:center;gap:10px;margin-bottom:26px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--hot);box-shadow:0 0 0 0 var(--hot);animation:beat 1.6s infinite}
+@keyframes beat{0%{box-shadow:0 0 0 0 rgba(255,90,54,.6)}70%{box-shadow:0 0 0 12px rgba(255,90,54,0)}100%{box-shadow:0 0 0 0 rgba(255,90,54,0)}}
+
+/* linha de batimento */
+.pulse-line{position:absolute;left:0;width:100%;top:56%;height:120px;pointer-events:none;z-index:0;opacity:.5}
+.pulse-line path{fill:none;stroke:var(--hot);stroke-width:2;stroke-dasharray:2600;stroke-dashoffset:2600;animation:draw 3.2s .3s ease-out forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hero-grid>*{position:relative;z-index:1;min-width:0}
+
+/* celular */
+.phone-stage{position:relative;display:flex;justify-content:center;padding-block:10px}
+.phone{width:min(300px,78vw);aspect-ratio:9/18.5;max-width:100%;background:#09080C;border:1px solid #34303D;border-radius:44px;padding:14px;box-shadow:0 40px 80px -30px rgba(255,46,126,.35),0 0 0 6px #121016;transform:rotate(3deg)}
+.screen{height:100%;border-radius:32px;background:var(--panel);overflow:hidden;display:flex;flex-direction:column}
+.p-head{display:flex;align-items:center;gap:12px;padding:20px 16px 12px}
+.avatar{width:52px;height:52px;border-radius:50%;padding:2px;background:linear-gradient(135deg,var(--hot),var(--hot-2),var(--violet))}
+.avatar span{display:block;width:100%;height:100%;border-radius:50%;background:var(--panel);border:2px solid var(--panel);background-image:radial-gradient(circle at 50% 38%,#d9cfc2 0 22%,transparent 23%),radial-gradient(ellipse at 50% 100%,#d9cfc2 0 45%,transparent 46%)}
+.p-stats{display:flex;gap:10px;font-size:10px;color:var(--mute);line-height:1.2}
+.p-stats b{display:block;color:var(--paper);font-size:13px;font-family:var(--f-display);}
+.p-bio{padding:0 16px 12px;font-size:11.5px;line-height:1.4;color:var(--mute)}
+.p-bio b{color:var(--paper)}
+.p-hl{display:flex;gap:10px;padding:0 16px 14px}
+.p-hl i{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);display:block;background:radial-gradient(circle,#2a2633 0 55%,transparent 56%)}
+.p-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;flex:1}
+.p-grid div{aspect-ratio:1;min-width:0;overflow:hidden;position:relative;font:700 9px var(--f-mono);letter-spacing:.06em;color:rgba(255,255,255,.85);display:flex;align-items:flex-end;padding:6px;text-transform:uppercase}
+.t1{background:linear-gradient(140deg,#FF5A36,#FF2E7E)}
+.t2{background:#E9E1D3;color:#1a1520!important}
+.t3{background:linear-gradient(160deg,#2b2340,#7C5CFF)}
+.t4{background:#211d28;background-image:repeating-linear-gradient(0deg,transparent 0 9px,#2f2a38 9px 10px)}
+.t5{background:linear-gradient(200deg,#FF2E7E,#7C5CFF)}
+.t6{background:#FFB547;color:#1a1520!important}
+.t7{background:linear-gradient(120deg,#7C5CFF,#3a2b7a)}
+.t8{background:#E9E1D3;color:#1a1520!important;background-image:radial-gradient(circle at 70% 30%,#FF5A36 0 18%,transparent 19%)}
+.t9{background:linear-gradient(150deg,#1c1822,#FF5A36)}
+
+.float-card{position:absolute;left:-6%;bottom:12%;background:rgba(23,20,29,.92);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;width:210px;box-shadow:0 20px 40px -18px rgba(0,0,0,.7);transform:rotate(-4deg)}
+.float-card .num{font-family:var(--f-display);font-weight:500;font-size:26px;line-height:1;margin-top:6px}
+.float-card .num small{font-size:13px;color:#5BE49B;font-family:var(--f-mono);font-weight:500;margin-left:6px}
+.float-card svg{display:block;width:100%;height:42px;margin-top:8px}
+.float-card .ex{font-size:10px;color:var(--mute);margin-top:4px}
+.float-tag{position:absolute;right:-4%;top:46%;background:var(--paper);color:var(--ink);border-radius:999px;padding:9px 14px;font:600 13px var(--f-body);transform:rotate(6deg);box-shadow:0 12px 30px -12px rgba(0,0,0,.6)}
+
+@media (max-width:880px){
+  .hero-grid{grid-template-columns:1fr}
+  .phone-stage{margin-top:12px}
+  .float-card{left:0}
+  .float-tag{right:0}
+}
+
+/* faixa */
+.ticker{border-block:1px solid var(--line);overflow:hidden;background:var(--panel)}
+.ticker-track{display:flex;gap:44px;width:max-content;padding-block:18px;animation:slide 38s linear infinite;font-family:var(--f-display);font-weight:700;font-size:20px;letter-spacing:-.01em;white-space:nowrap}
+.ticker-track span{display:inline-flex;align-items:center;gap:44px}
+.ticker-track span::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--hot)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* seções */
+section{padding-block:clamp(72px,10vw,128px)}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:clamp(36px,5vw,60px)}
+.sec-head p{color:var(--mute);max-width:42ch;font-size:18px}
+.sec-head .mono{display:block;margin-bottom:16px}
+
+/* serviços */
+.services{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.svc{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:clamp(26px,3.4vw,44px);display:flex;flex-direction:column;gap:22px;min-width:0}
+.svc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.svc h3{font-size:clamp(28px,3.2vw,40px);font-weight:500}
+.svc .ico{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;flex-shrink:0}
+.svc.ig .ico{background:linear-gradient(135deg,var(--hot),var(--hot-2))}
+.svc.web .ico{background:var(--paper);color:var(--ink)}
+.svc .ico svg{width:28px;height:28px}
+.svc > p{color:var(--mute);max-width:46ch}
+.svc ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+.svc li{padding:12px 0;border-top:1px solid var(--line);font-size:15.5px;display:flex;gap:10px;align-items:baseline}
+.svc li::before{content:"+";color:var(--hot);font-family:var(--f-mono);font-weight:500}
+@media (max-width:880px){.services{grid-template-columns:1fr}}
+@media (max-width:480px){.svc ul{grid-template-columns:1fr}}
+
+/* para quem */
+.who{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.who article{padding:32px 26px 36px 0;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:14px;min-width:0}
+.who article+article{padding-left:26px}
+.who article:last-child{border-right:0}
+.who .big{font-family:var(--f-display);font-weight:500;font-size:22px;line-height:1.1}
+.who p{color:var(--mute);font-size:15.5px}
+.who .ex{font-family:var(--f-mono);font-size:12px;color:var(--paper);opacity:.75;line-height:1.7}
+@media (max-width:980px){.who{grid-template-columns:1fr 1fr}.who article:nth-child(2){border-right:0}.who article:nth-child(3){padding-left:0;border-top:1px solid var(--line)}.who article:nth-child(4){border-top:1px solid var(--line)}}
+@media (max-width:560px){.who{grid-template-columns:1fr}.who article,.who article+article{padding-left:0;border-right:0;border-top:1px solid var(--line)}.who article:first-child{border-top:0}}
+
+/* processo */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+.step{position:relative;padding-top:28px;min-width:0}
+.step::before{counter-increment:s;content:"0" counter(s);font-family:var(--f-mono);font-size:13px;color:var(--hot);position:absolute;top:0;left:0}
+.step .bar-l{height:2px;background:var(--line);margin-bottom:24px;position:relative;overflow:hidden}
+.step .bar-l::after{content:"";position:absolute;inset:0;background:var(--hot);transform-origin:left;transform:scaleX(.25)}
+.step:nth-child(2) .bar-l::after{transform:scaleX(.5)}
+.step:nth-child(3) .bar-l::after{transform:scaleX(.75)}
+.step:nth-child(4) .bar-l::after{transform:scaleX(1)}
+.step h3{margin-bottom:12px}
+.step p{color:var(--mute);font-size:15.5px}
+.step .when{margin-top:14px}
+@media (max-width:880px){.steps{grid-template-columns:1fr 1fr;gap:40px 20px}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+
+/* métricas que acompanhamos */
+.metrics{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(32px,5vw,72px);align-items:center}
+.metrics p.lead{color:var(--mute);font-size:18px;margin-top:22px;max-width:40ch}
+.report{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:24px;min-width:0}
+.report-head{display:flex;justify-content:space-between;gap:12px;align-items:center;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.report-head b{font-family:var(--f-display);font-size:17px}
+.chip{font:500 11px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px;border:1px solid var(--line);color:var(--mute)}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr)}
+.kpi{padding:18px 4px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.kpi:nth-child(odd){padding-right:18px;border-right:1px solid var(--line)}
+.kpi:nth-child(even){padding-left:18px}
+.kpi:nth-last-child(-n+2){border-bottom:0}
+.kpi .k{font-size:14px;color:var(--mute)}
+.kpi .v{font-size:15px;line-height:1.45}
+@media (max-width:880px){.metrics{grid-template-columns:1fr}}
+@media (max-width:480px){.kpis{grid-template-columns:1fr}.kpi:nth-child(odd){border-right:0;padding-right:4px}.kpi:nth-child(even){padding-left:4px}.kpi:nth-last-child(2){border-bottom:1px solid var(--line)}}
+
+
+/* feed */
+.feed{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(240px,300px);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;scrollbar-color:var(--line) transparent}
+.feed figure{margin:0;scroll-snap-align:start;display:flex;flex-direction:column;gap:10px}
+.feed img{width:100%;height:auto;display:block;border-radius:14px;border:1px solid var(--line)}
+.feed figcaption{font:500 12px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.feed .story{grid-column:span 1}
+.feed-note{margin-top:18px;color:var(--mute);font-size:15px}
+.feed-note a{color:var(--hot)}
+
+/* planos */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.plan{border:1px solid var(--line);border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:20px;min-width:0}
+.plan.feat{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.plan.feat .pdesc,.plan.feat .mono{color:#5b5466}
+.plan.feat li{border-color:#d8d0c4}
+.plan .name{font-family:var(--f-display);font-weight:500;font-size:30px;line-height:1}
+.plan .pdesc{color:var(--mute);font-size:15.5px}
+.plan ul{list-style:none;margin:0;padding:0;flex:1}
+.plan li{padding:11px 0;border-top:1px solid var(--line);font-size:15px;display:flex;gap:10px}
+.plan li svg{width:16px;height:16px;flex-shrink:0;margin-top:4px;color:var(--hot)}
+.plan .btn{justify-content:center}
+.plan.feat .btn-hot{background:var(--ink);color:var(--paper)}
+.plan.feat .btn-hot:hover{background:#2a2433}
+.plan-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.badge{font:600 12px var(--f-body);background:var(--hot);color:#140906;padding:6px 12px;border-radius:999px}
+@media (max-width:960px){.plans{grid-template-columns:1fr}}
+
+/* faq */
+.faq{display:grid;grid-template-columns:1fr 1.6fr;gap:clamp(32px,5vw,72px)}
+.faq-list details{border-top:1px solid var(--line)}
+.faq-list details:last-child{border-bottom:1px solid var(--line)}
+.faq-list summary{list-style:none;cursor:pointer;padding:22px 40px 22px 0;font-family:var(--f-display);font-weight:700;font-size:19px;position:relative;line-height:1.3}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:"+";position:absolute;right:4px;top:18px;font-family:var(--f-mono);font-size:24px;color:var(--hot);transition:transform .25s}
+.faq-list details[open] summary::after{transform:rotate(45deg)}
+.faq-list details p{color:var(--mute);padding-bottom:24px;max-width:62ch}
+@media (max-width:880px){.faq{grid-template-columns:1fr}}
+
+/* contato */
+.contact{background:linear-gradient(135deg,var(--hot) 0%,var(--hot-2) 100%);color:#140906;border-radius:28px;padding:clamp(30px,5vw,64px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px)}
+.contact h2{font-size:clamp(36px,5.4vw,72px);font-weight:400}
+.contact .intro{margin-top:20px;font-size:18px;max-width:36ch;color:#2a0f0a}
+.channels{margin-top:32px;display:flex;flex-direction:column;gap:2px}
+.channel{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;border-top:1px solid rgba(20,9,6,.22);flex-wrap:wrap}
+.channel .mono{color:#3d1610}
+.channel .val{font-weight:600;font-size:17px;user-select:all;word-break:break-word}
+.copy{background:none;border:1px solid rgba(20,9,6,.35);border-radius:999px;padding:6px 12px;font:600 12px var(--f-body);color:#140906;cursor:pointer}
+.copy:hover{background:rgba(20,9,6,.08)}
+form.lead-form{background:var(--ink);color:var(--paper);border-radius:20px;padding:clamp(22px,3vw,32px);display:flex;flex-direction:column;gap:16px;min-width:0}
+.field{display:flex;flex-direction:column;gap:7px}
+.field label{font-size:14px;color:var(--mute)}
+.field input,.field select,.field textarea{background:var(--panel);border:1px solid var(--line);border-radius:12px;color:var(--paper);font:16px var(--f-body);padding:13px 14px;width:100%}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--hot)}
+.field textarea{min-height:96px;resize:vertical}
+.pick{display:flex;flex-wrap:wrap;gap:8px}
+.pick{position:relative}
+.field .pick input{position:absolute;left:0;top:0;width:1px;height:1px;padding:0;opacity:0;pointer-events:none}
+.pick label{border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:14px;cursor:pointer;color:var(--paper);transition:all .2s}
+.pick input:checked+label{background:var(--hot);border-color:var(--hot);color:#140906;font-weight:600}
+.pick input:focus-visible+label{outline:2px solid var(--hot);outline-offset:2px}
+.form-out{display:none;border:1px solid var(--line);border-radius:12px;padding:14px;font-size:14.5px;color:var(--mute)}
+.form-out.show{display:block}
+.form-out a{color:var(--hot);font-weight:600}
+.err{color:#ff8a70;font-size:13.5px;min-height:1em}
+@media (max-width:880px){.contact{grid-template-columns:1fr}}
+
+/* rodapé */
+footer{padding-block:56px 40px;border-top:1px solid var(--line);margin-top:clamp(72px,10vw,128px)}
+.foot{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;align-items:flex-start}
+.foot .cols{display:flex;gap:56px;flex-wrap:wrap}
+.foot h4{font:500 12px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:0 0 14px}
+.foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:15px}
+.foot a{text-decoration:none;color:var(--paper);opacity:.85}
+.foot a:hover{opacity:1;color:var(--hot)}
+.foot .tagline{color:var(--mute);margin-top:14px;max-width:30ch;font-size:15px}
+.legal{margin-top:48px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--mute);font-size:13px}
+.huge{margin-top:56px;color:var(--line);max-width:760px}
+.huge svg{width:100%;height:auto;display:block}
+
+/* whatsapp flutuante */
+.wa-float{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;width:58px;height:58px;border-radius:50%;background:#25D366;color:#06210f;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(37,211,102,.55);transition:transform .2s}
+.wa-float:hover{transform:scale(1.07)}
+.wa-float svg{width:28px;height:28px}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .pulse-line path{stroke-dashoffset:0}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="wrap bar">
+    <a href="#inicio" class="logo" aria-label="Vértice, início">
+      <svg viewBox="-6 -4 362 202" aria-hidden="true"><defs><linearGradient id="lg-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF5A36"/><stop offset="1" stop-color="#FF2E7E"/></linearGradient></defs><path d="M10 120 L46 52 L68 84 L118 8 L162 88 L206 46 L344 190" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="9"/><path d="M20 146 L36 190 L52 146 M61 168 H105 A22 22 0 1 0 99 183 M118 190 V146 M118 164 Q118 146 138 146 M156 128 V178 Q156 190 168 190 M146 146 H168 M184 146 V190 M236 154 A22 22 0 1 0 236 182 M240 168 H284 A22 22 0 1 0 278 183" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="9"/><circle cx="184" cy="127" r="6.5" fill="url(#lg-top)"/></svg>
+    </a>
+    <nav class="links" id="nav">
+      <a href="#servicos">Serviços</a>
+      <a href="#para-quem">Para quem</a>
+      <a href="#processo">Como trabalhamos</a>
+      <a href="#feed">Feed</a>
+      <a href="#planos">Planos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="btn btn-hot" href="#contato">Pedir orçamento</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+  </div>
+</header>
+
+<main id="inicio">
+  <!-- HERO -->
+  <div class="hero">
+    <svg class="pulse-line" viewBox="0 0 1400 120" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 104 H460 L540 92 L600 100 L680 64 L740 76 L820 10 L880 58 L940 50 H1400"/>
+    </svg>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="tag mono"><span class="dot"></span>Agência de Instagram &amp; Sites</span>
+        <h1>Seu perfil<br>no <span class="hot">topo</span><br>do feed.</h1>
+        <p class="lead">Cuidamos do Instagram e criamos o site de <strong>empresas, influenciadores e profissionais</strong> que querem ser vistos, lembrados e procurados.</p>
+        <div class="ctas">
+          <a class="btn btn-hot" href="#contato">Quero crescer no Instagram
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#servicos">Ver serviços</a>
+        </div>
+      </div>
+
+      <div class="phone-stage" aria-hidden="true">
+        <div class="phone">
+          <div class="screen">
+            <div class="p-head">
+              <div class="avatar"><span></span></div>
+              <div class="p-stats">
+                <div><b>214</b>posts</div>
+                <div><b>18,4 mil</b>seguidores</div>
+                <div><b>3,2%</b>engaj.</div>
+              </div>
+            </div>
+            <p class="p-bio"><b>Studio Aurora · Estética</b><br>Agende pelo link abaixo ✦<br>studioaurora.com.br</p>
+            <div class="p-hl"><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="p-grid">
+              <div class="t1">Reels</div><div class="t2">Dica #12</div><div class="t3">Carrossel</div>
+              <div class="t4">Antes/Depois</div><div class="t5">Bastidores</div><div class="t6">Promo</div>
+              <div class="t7">FAQ</div><div class="t8">Equipe</div><div class="t9">Reels</div>
+            </div>
+          </div>
+        </div>
+        <div class="float-card">
+          <span class="mono">Alcance · 30 dias</span>
+          <div class="num">42,7 mil<small>▲ 61%</small></div>
+          <svg viewBox="0 0 200 42" preserveAspectRatio="none">
+            <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF5A36" stop-opacity=".45"/><stop offset="1" stop-color="#FF5A36" stop-opacity="0"/></linearGradient></defs>
+            <path d="M0 36 L20 33 L40 34 L60 28 L80 30 L100 22 L120 24 L140 16 L160 18 L180 9 L200 5 V42 H0Z" fill="url(#g1)"/>
+            <path d="M0 36 L20 33 L40 34 L60 28 L80 30 L100 22 L120 24 L140 16 L160 18 L180 9 L200 5" fill="none" stroke="#FF5A36" stroke-width="2"/>
+            <circle cx="200" cy="5" r="3" fill="#FF5A36"/>
+          </svg>
+          <div class="ex">Relatório ilustrativo</div>
+        </div>
+        <div class="float-tag">+ site no ar em 15 dias</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Reels</span><span>Carrosséis</span><span>Stories</span><span>Calendário editorial</span><span>Identidade visual</span><span>Tráfego pago</span><span>Sites institucionais</span><span>Landing pages</span><span>Link na bio</span><span>Relatórios mensais</span>
+      <span>Reels</span><span>Carrosséis</span><span>Stories</span><span>Calendário editorial</span><span>Identidade visual</span><span>Tráfego pago</span><span>Sites institucionais</span><span>Landing pages</span><span>Link na bio</span><span>Relatórios mensais</span>
+    </div>
+  </div>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="mono">O que fazemos</span>
+          <h2>Duas frentes.<br>Uma presença <em class="hot">só.</em></h2>
+        </div>
+        <p>O Instagram atrai. O site convence e converte. Cuidamos dos dois com a mesma identidade, para quem te encontrar em um reconhecer você no outro.</p>
+      </div>
+
+      <div class="services">
+        <article class="svc ig">
+          <div class="svc-top">
+            <h3>Gestão de Instagram</h3>
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#140906" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#140906"/></svg>
+            </div>
+          </div>
+          <p>Do planejamento ao relatório: a gente pensa o conteúdo, cria, publica e acompanha os números para o perfil crescer com consistência.</p>
+          <ul>
+            <li>Planejamento e calendário mensal</li>
+            <li>Design de posts e carrosséis</li>
+            <li>Roteiro e edição de Reels</li>
+            <li>Legendas e hashtags</li>
+            <li>Stories e destaques</li>
+            <li>Otimização de bio e perfil</li>
+            <li>Anúncios (Meta Ads)</li>
+            <li>Relatório mensal de resultados</li>
+          </ul>
+        </article>
+
+        <article class="svc web">
+          <div class="svc-top">
+            <h3>Criação de sites</h3>
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2.5" y="4" width="19" height="16" rx="3"/><path d="M2.5 9h19M6 6.5h.01M8.5 6.5h.01"/></svg>
+            </div>
+          </div>
+          <p>Sites rápidos, bonitos no celular e pensados para gerar contato: seu cliente encontra, entende o que você faz e chama no WhatsApp.</p>
+          <ul>
+            <li>Site institucional</li>
+            <li>Landing page de vendas</li>
+            <li>Página de link na bio</li>
+            <li>Portfólio e mídia kit</li>
+            <li>Botão de WhatsApp e formulários</li>
+            <li>Google Meu Negócio e SEO básico</li>
+            <li>Domínio, hospedagem e e-mail</li>
+            <li>Manutenção e atualizações</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA QUEM -->
+  <section id="para-quem" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="mono">Para quem</span>
+          <h2>Cada perfil tem<br>um ritmo <em class="hot">diferente.</em></h2>
+        </div>
+        <p>Uma loja precisa vender, um influenciador precisa fechar parcerias, um profissional precisa passar confiança. Montamos a estratégia a partir do seu objetivo.</p>
+      </div>
+      <div class="who">
+        <article>
+          <span class="big">Empresas e comércios</span>
+          <p>Perfil que mostra o produto, gera pedidos e leva o cliente até a loja ou ao WhatsApp.</p>
+          <span class="ex">Restaurantes · Lojas · Academias · Salões</span>
+        </article>
+        <article>
+          <span class="big">Influenciadores e criadores</span>
+          <p>Linha editorial, constância e um mídia kit profissional para negociar com marcas.</p>
+          <span class="ex">Lifestyle · Fitness · Moda · Humor</span>
+        </article>
+        <article>
+          <span class="big">Profissionais liberais</span>
+          <p>Conteúdo que educa e passa autoridade, respeitando as regras de cada conselho profissional.</p>
+          <span class="ex">Saúde · Direito · Arquitetura · Coaching</span>
+        </article>
+        <article>
+          <span class="big">Marcas pessoais</span>
+          <p>Para quem quer transformar o próprio nome em referência e lançar produtos, cursos ou serviços.</p>
+          <span class="ex">Palestrantes · Mentores · Artistas</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSO -->
+  <section id="processo" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="mono">Como trabalhamos</span>
+          <h2>Do diagnóstico<br>ao <em class="hot">relatório.</em></h2>
+        </div>
+        <p>Um ciclo mensal claro, para você saber o que está sendo feito, quando, e o que trouxe resultado.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="bar-l"></div>
+          <h3>Diagnóstico</h3>
+          <p>Analisamos seu perfil, seus concorrentes e seu público. Você recebe um raio-x com o que melhorar primeiro.</p>
+          <p class="when mono">Semana 1</p>
+        </div>
+        <div class="step">
+          <div class="bar-l"></div>
+          <h3>Estratégia</h3>
+          <p>Definimos pilares de conteúdo, tom de voz, identidade visual e o calendário do mês para sua aprovação.</p>
+          <p class="when mono">Semana 1–2</p>
+        </div>
+        <div class="step">
+          <div class="bar-l"></div>
+          <h3>Produção</h3>
+          <p>Criamos posts, carrosséis, Reels e Stories, publicamos nos melhores horários e respondemos ao engajamento.</p>
+          <p class="when mono">Todo mês</p>
+        </div>
+        <div class="step">
+          <div class="bar-l"></div>
+          <h3>Relatório e ajuste</h3>
+          <p>No fim do mês, mostramos os números, o que funcionou e o que muda no próximo calendário.</p>
+          <p class="when mono">Fim do mês</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉTRICAS -->
+  <section style="padding-top:0">
+    <div class="wrap metrics">
+      <div>
+        <span class="mono">Transparência</span>
+        <h2 style="margin-top:16px">Números que<br>você entende.</h2>
+        <p class="lead">Seguidor sozinho não paga conta. No relatório mensal, mostramos as métricas que dizem se o Instagram está trazendo cliente.</p>
+      </div>
+      <div class="report">
+        <div class="report-head">
+          <b>O que entra no relatório</b>
+          <span class="chip">Mensal</span>
+        </div>
+        <div class="kpis">
+          <div class="kpi"><span class="k">Alcance</span><span class="v">Quantas contas diferentes viram seu conteúdo</span></div>
+          <div class="kpi"><span class="k">Taxa de engajamento</span><span class="v">Curtidas, comentários, salvamentos e compartilhamentos sobre o alcance</span></div>
+          <div class="kpi"><span class="k">Salvamentos</span><span class="v">O sinal de que o conteúdo foi útil de verdade</span></div>
+          <div class="kpi"><span class="k">Visitas ao perfil</span><span class="v">Quem se interessou e quis saber mais</span></div>
+          <div class="kpi"><span class="k">Cliques no link</span><span class="v">Quem saiu do Instagram e foi para o site ou WhatsApp</span></div>
+          <div class="kpi"><span class="k">Melhores posts</span><span class="v">O que repetir e o que deixar de lado no próximo mês</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEED -->
+  <section id="feed" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="mono">Nosso feed</span>
+          <h2>Fazemos para nós<br>o que vamos fazer <em class="hot">por você.</em></h2>
+        </div>
+        <p>O carrossel de lançamento da Vértice, criado no Illustrator com a nossa própria identidade visual. Arraste para o lado.</p>
+      </div>
+      <div class="feed" tabindex="0" aria-label="Posts de lançamento da Vértice">
+        <figure><img src="img/post-01-capa.jpg" alt="Post 1: logo da Vértice e a frase Chegamos." loading="lazy" width="720" height="900"><figcaption>01 · Capa</figcaption></figure>
+        <figure><img src="img/post-02-topo.jpg" alt="Post 2: Seu perfil no topo do feed." loading="lazy" width="720" height="900"><figcaption>02 · Proposta</figcaption></figure>
+        <figure><img src="img/post-03-instagram.jpg" alt="Post 3: lista de serviços de gestão de Instagram" loading="lazy" width="720" height="900"><figcaption>03 · Instagram</figcaption></figure>
+        <figure><img src="img/post-04-sites.jpg" alt="Post 4: lista de serviços de criação de sites" loading="lazy" width="720" height="900"><figcaption>04 · Sites</figcaption></figure>
+        <figure><img src="img/post-05-cta.jpg" alt="Post 5: Bora levar seu perfil ao topo? Chama no direct" loading="lazy" width="720" height="900"><figcaption>05 · Chamada</figcaption></figure>
+      </div>
+      <p class="feed-note">Siga <a href="https://instagram.com/verticeesocial" target="_blank" rel="noopener">@verticeesocial</a> para ver o resto.</p>
+    </div>
+  </section>
+
+  <!-- PLANOS -->
+  <section id="planos" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="mono">Planos</span>
+          <h2>Escolha por onde<br><em class="hot">começar.</em></h2>
+        </div>
+        <p>Valores sob medida para o tamanho do seu projeto. Conte o que você precisa e enviamos a proposta em até 24 horas.</p>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <div class="plan-top"><span class="name">Essencial</span></div>
+          <p class="pdesc">Para quem está começando e precisa de um perfil profissional e constante.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5 9-10"/></svg>12 posts por mês (feed e carrossel)</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5 9-10"/></svg>Stories semanais</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5 9-10"/></svg>Otimização da bio e destaques</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5 9-10"/></svg>Relatório mensal</li>
+          </ul>
+          <a class="btn btn-ghost" href="#contato" data-plan="Essencial">Quero este plano</a>
+        </div>
+        <div class="plan feat">
+          <div class="plan-top"><span class="name">Crescimento</span><span class="badge">Mais pedido</span></div>
+          <p class="pdesc">Para acelerar alcance com vídeo, anúncios e uma estratégia mais completa.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5 9-10"/></svg>16 posts por mês, incluindo 4 Reels</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5 9-10"/></svg>Stories diários</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5 9-10"/></svg>Gestão de anúncios no Meta Ads</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5 9-10"/></svg>Resposta a comentários e directs</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5 9-10"/></svg>Reunião mensal de resultados</li>
+          </ul>
+          <a class="btn btn-hot" href="#contato" data-plan="Crescimento">Quero este plano</a>
+        </div>
+        <div class="plan">
+          <div class="plan-top"><span class="name">Presença total</span></div>
+          <p class="pdesc">Instagram e site juntos, com a mesma identidade visual do início ao fim.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5 9-10"/></svg>Tudo do plano Crescimento</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5 9-10"/></svg>Site profissional ou landing page</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5 9-10"/></svg>Domínio, hospedagem e e-mail</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5 9-10"/></svg>Identidade visual ou ajuste de marca</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5 9-10"/></svg>Manutenção do site inclusa</li>
+          </ul>
+          <a class="btn btn-ghost" href="#contato" data-plan="Presença total">Quero este plano</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="padding-top:0">
+    <div class="wrap faq">
+      <div>
+        <span class="mono">Dúvidas frequentes</span>
+        <h2 style="margin-top:16px">Antes de<br>começar.</h2>
+      </div>
+      <div class="faq-list">
+        <details open>
+          <summary>Preciso gravar vídeos ou aparecer?</summary>
+          <p>Não é obrigatório, mas ajuda muito. Se você topar aparecer, mandamos roteiros simples e editamos tudo. Se preferir não aparecer, montamos o conteúdo com fotos do produto, bastidores e design.</p>
+        </details>
+        <details>
+          <summary>Em quanto tempo vejo resultado?</summary>
+          <p>Nos primeiros 30 dias o perfil já fica mais profissional e organizado. Crescimento de alcance e contatos costuma aparecer entre o segundo e o terceiro mês de constância.</p>
+        </details>
+        <details>
+          <summary>Quem aprova os posts antes de publicar?</summary>
+          <p>Você. Enviamos o calendário do mês com antecedência e só publicamos o que foi aprovado.</p>
+        </details>
+        <details>
+          <summary>Quanto tempo leva para o site ficar pronto?</summary>
+          <p>Uma landing page ou página de link na bio fica pronta em cerca de 7 dias. Um site institucional completo leva em média 15 dias após recebermos textos e fotos.</p>
+        </details>
+        <details>
+          <summary>Tem fidelidade ou multa?</summary>
+          <p>Os planos de Instagram são mensais. Pedimos um mínimo de 3 meses porque é o tempo que a estratégia precisa para mostrar resultado.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" style="padding-top:0">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <h2>Bora levar seu<br>perfil ao <em class="hot">topo?</em></h2>
+          <p class="intro">Conte rapidinho sobre você. Respondemos no WhatsApp em até 24 horas úteis com uma proposta.</p>
+          <div class="channels">
+            <div class="channel"><div><span class="mono">WhatsApp</span><div class="val" id="c-wa">(11) 90000-0000</div></div><button class="copy" data-copy="c-wa">Copiar</button></div>
+            <div class="channel"><div><span class="mono">Instagram</span><div class="val" id="c-ig">@verticeesocial</div></div><button class="copy" data-copy="c-ig">Copiar</button></div>
+            <div class="channel"><div><span class="mono">E-mail</span><div class="val" id="c-em">contato@verticeesocial.com.br</div></div><button class="copy" data-copy="c-em">Copiar</button></div>
+          </div>
+        </div>
+
+        <form class="lead-form" id="leadForm" novalidate>
+          <div class="field">
+            <label for="f-nome">Seu nome</label>
+            <input id="f-nome" name="nome" autocomplete="name" placeholder="Como podemos te chamar?">
+          </div>
+          <div class="field">
+            <span style="font-size:14px;color:var(--mute)">Você é</span>
+            <div class="pick" role="radiogroup">
+              <input type="radio" name="tipo" id="t-emp" value="Empresa" checked><label for="t-emp">Empresa</label>
+              <input type="radio" name="tipo" id="t-inf" value="Influenciador(a)"><label for="t-inf">Influenciador(a)</label>
+              <input type="radio" name="tipo" id="t-pro" value="Profissional liberal"><label for="t-pro">Profissional</label>
+              <input type="radio" name="tipo" id="t-out" value="Outro"><label for="t-out">Outro</label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-serv">O que você precisa?</label>
+            <select id="f-serv" name="servico">
+              <option>Gestão de Instagram</option>
+              <option>Criação de site</option>
+              <option>Instagram + site</option>
+              <option>Ainda não sei, quero conversar</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-ig">Seu @ no Instagram (opcional)</label>
+            <input id="f-ig" name="ig" placeholder="@seuperfil">
+          </div>
+          <div class="field">
+            <label for="f-msg">Conte um pouco sobre o projeto</label>
+            <textarea id="f-msg" name="msg" placeholder="Ex.: tenho uma clínica e quero mais agendamentos pelo Instagram"></textarea>
+          </div>
+          <p class="err" id="formErr" aria-live="polite"></p>
+          <button class="btn btn-hot" type="submit" style="justify-content:center">Montar mensagem para o WhatsApp</button>
+          <div class="form-out" id="formOut" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a href="#inicio" class="logo logo-foot" aria-label="Vértice, início">
+          <svg viewBox="-6 -4 362 202" aria-hidden="true"><defs><linearGradient id="lg-foot" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF5A36"/><stop offset="1" stop-color="#FF2E7E"/></linearGradient></defs><path d="M10 120 L46 52 L68 84 L118 8 L162 88 L206 46 L344 190" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="7"/><path d="M20 146 L36 190 L52 146 M61 168 H105 A22 22 0 1 0 99 183 M118 190 V146 M118 164 Q118 146 138 146 M156 128 V178 Q156 190 168 190 M146 146 H168 M184 146 V190 M236 154 A22 22 0 1 0 236 182 M240 168 H284 A22 22 0 1 0 278 183" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="7"/><circle cx="184" cy="127" r="6.5" fill="url(#lg-foot)"/></svg>
+        </a>
+        <p class="tagline">Gestão de Instagram e criação de sites para quem quer crescer com consistência.</p>
+      </div>
+      <div class="cols">
+        <div>
+          <h4>Agência</h4>
+          <ul><li><a href="#servicos">Serviços</a></li><li><a href="#processo">Como trabalhamos</a></li><li><a href="#planos">Planos</a></li></ul>
+        </div>
+        <div>
+          <h4>Contato</h4>
+          <ul><li><a href="#contato">(11) 90000-0000</a></li><li><a href="#contato">@verticeesocial</a></li><li><a href="#contato">contato@verticeesocial.com.br</a></li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="huge" aria-hidden="true"><svg viewBox="-6 -4 362 202" aria-hidden="true"><defs><linearGradient id="lg-huge" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF5A36"/><stop offset="1" stop-color="#FF2E7E"/></linearGradient></defs><path d="M10 120 L46 52 L68 84 L118 8 L162 88 L206 46 L344 190" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><path d="M20 146 L36 190 L52 146 M61 168 H105 A22 22 0 1 0 99 183 M118 190 V146 M118 164 Q118 146 138 146 M156 128 V178 Q156 190 168 190 M146 146 H168 M184 146 V190 M236 154 A22 22 0 1 0 236 182 M240 168 H284 A22 22 0 1 0 278 183" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/><circle cx="184" cy="127" r="6.5" fill="url(#lg-huge)"/></svg></div>
+    <div class="legal"><span>© <span id="yr">2026</span> Vértice Social Media · CNPJ 00.000.000/0001-00</span><span>Do zero ao topo, feito no Brasil</span></div>
+  </div>
+</footer>
+
+<a class="wa-float" id="waFloat" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20V%C3%A9rtice!" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>
+</a>
+
+<script>
+(function(){
+  // >>> Troque aqui o número do WhatsApp (DDI + DDD + número, só dígitos)
+  var WHATSAPP = "5511900000000";
+
+  var yr=document.getElementById("yr"); if(yr) yr.textContent=new Date().getFullYear();
+
+  // menu mobile
+  var btn=document.getElementById("menuBtn"), nav=document.getElementById("nav");
+  btn.addEventListener("click",function(){var o=nav.classList.toggle("open");btn.setAttribute("aria-expanded",o);btn.textContent=o?"Fechar":"Menu";});
+  nav.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){nav.classList.remove("open");btn.setAttribute("aria-expanded","false");btn.textContent="Menu";});});
+
+  // escolher plano preenche o formulário
+  document.querySelectorAll("[data-plan]").forEach(function(a){
+    a.addEventListener("click",function(){
+      var m=document.getElementById("f-msg");
+      var s=document.getElementById("f-serv");
+      var p=a.getAttribute("data-plan");
+      s.value = p==="Presença total" ? "Instagram + site" : "Gestão de Instagram";
+      if(!m.value) m.value="Tenho interesse no plano "+p+".";
+    });
+  });
+
+  // copiar contatos
+  document.querySelectorAll(".copy").forEach(function(b){
+    b.addEventListener("click",function(){
+      var el=document.getElementById(b.getAttribute("data-copy")), t=el.textContent.trim();
+      function ok(){b.textContent="Copiado";setTimeout(function(){b.textContent="Copiar";},1600);}
+      function sel(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Selecionado";setTimeout(function(){b.textContent="Copiar";},1600);}
+      try{navigator.clipboard.writeText(t).then(ok,sel);}catch(e){sel();}
+    });
+  });
+
+  // formulário -> mensagem pronta para WhatsApp
+  var form=document.getElementById("leadForm"), out=document.getElementById("formOut"), err=document.getElementById("formErr");
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    var nome=form.nome.value.trim();
+    if(!nome){err.textContent="Escreva seu nome para montarmos a mensagem.";form.nome.focus();return;}
+    err.textContent="";
+    var tipo=(form.querySelector('input[name="tipo"]:checked')||{}).value||"";
+    var txt="Olá! Sou "+nome+" ("+tipo+").\nPreciso de: "+form.servico.value+"."+
+      (form.ig.value.trim()?"\nMeu Instagram: "+form.ig.value.trim():"")+
+      (form.msg.value.trim()?"\n\n"+form.msg.value.trim():"");
+    var url="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(txt);
+    out.innerHTML="";
+    var p=document.createElement("p");p.textContent="Mensagem pronta, "+nome.split(" ")[0]+". ";
+    var a=document.createElement("a");a.href=url;a.target="_blank";a.rel="noopener";a.textContent="Abrir conversa no WhatsApp →";
+    p.appendChild(a);out.appendChild(p);out.classList.add("show");
+  });
+})();
+</script>
+
+</body>
+</html>
