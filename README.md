@@ -4,6 +4,12 @@ Site da agência Vértice: gestão de Instagram e criação de sites.
 
 Site estático, sem build. Publicado pela Vercel a cada push na branch main.
 
+## Vértice OS
+
+O sistema interno está em [`apps/vertice-os`](apps/vertice-os/README.md), com Next.js, TypeScript e Supabase. Sua publicação deve usar **um projeto Vercel separado**, com Root Directory `apps/vertice-os`. O site institucional e seus arquivos continuam na raiz, sem alteração de build.
+
+Consulte o README do app para instalação, variáveis, migrations, provisionamento do primeiro usuário, permissões, testes e limites da primeira fase. As migrations ficam em [`supabase/migrations`](supabase/migrations).
+
 ## Estrutura
 
 ```
